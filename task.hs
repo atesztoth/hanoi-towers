@@ -59,4 +59,9 @@ moveM r1 r2 p = do
   return $ move r1 r2 p
 
 moveManyM :: Int -> RodID -> RodID -> Problem -> SolverM Problem
-moveManyM = undefined
+moveManyM 0 r1 r2 p = pure p
+moveManyM n r1 r2 p = do
+  moveResult <- moveManyM (n - 1) r1 (freeRod r1 r2) p
+  result <- moveM r1 r2 moveResult
+  r <- moveManyM (n - 1) (freeRod r1 r2) r2 result
+  return r
