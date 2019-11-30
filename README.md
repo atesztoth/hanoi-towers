@@ -3,7 +3,6 @@
 Will be formatted later: 🇭🇺
 
 Hanoi tornyai
-Ezen házi feladat keretében a Hanoi tornyai problémát kell megoldani. Ez a feladat nagyobb lélegzetvéletű, így akár +/- pontokat is lehet vele szerezni. Összesen 16 pontos a feladatsor, 8 pont ér egy pluszt. Tehát aki megoldja az egészet, az olyan mintha egy +/-t hibátlanra írt volna meg.
 
 A probléma leírása
 A Hanoi tornyai problémában három rúd áll rendelkezésünkre (A, B és C), és n darab különböző méretű korongunk, amelyeken eleinte mind az első rúdon helyezkednek el, méret szerint rendezett sorrendben. A legnagyobb korong van legalul, a legkisebb legfelül.
