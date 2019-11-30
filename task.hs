@@ -40,4 +40,10 @@ executeMoves :: [Move] -> Problem -> Problem
 executeMoves [] p = p
 executeMoves ((r1, r2):xs) p = executeMoves xs (executeMove (r1, r2) p)
 
-freeRod :: 
+-- helper
+substractFromList :: (Eq a) => a -> [a] -> [a]
+substractFromList y [x] = if y == x then [] else [x]
+substractFromList y (x:xs) = substractFromList y [x] ++ substractFromList y xs
+
+freeRod :: RodID -> RodID -> RodID
+freeRod r1 r2 = head $ substractFromList r1 (substractFromList r2 [A, B, C])
