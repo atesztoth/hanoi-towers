@@ -1,5 +1,7 @@
 module Hanoi where
 
+import Control.Monad.Writer
+
 -- Disks of different sizes
 type Disk = Int
 -- A rod can have several disks on it
@@ -47,3 +49,14 @@ substractFromList y (x:xs) = substractFromList y [x] ++ substractFromList y xs
 
 freeRod :: RodID -> RodID -> RodID
 freeRod r1 r2 = head $ substractFromList r1 (substractFromList r2 [A, B, C])
+
+-- writer
+type SolverM = Writer [Move]
+
+moveM :: RodID -> RodID -> Problem -> SolverM Problem
+moveM r1 r2 p = do
+  tell [(r1, r2)]
+  return $ move r1 r2 p
+
+moveManyM :: Int -> RodID -> RodID -> Problem -> SolverM Problem
+moveManyM = undefined
