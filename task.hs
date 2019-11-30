@@ -33,5 +33,11 @@ move C A (a, b, c) = ((head c):a, b, tail c)
 move C B (a, b, c) = (a, (head c):b, tail c)
 move _ _ (a, b, c) = (a, b, c)
 
+executeMove :: Move -> Problem -> Problem
+executeMove (r1, r2) p = move r1 r2 p
+
 executeMoves :: [Move] -> Problem -> Problem
-executeMoves moves p = undefined
+executeMoves [] p = p
+executeMoves ((r1, r2):xs) p = executeMoves xs (executeMove (r1, r2) p)
+
+freeRod :: 
