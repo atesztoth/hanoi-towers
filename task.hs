@@ -65,3 +65,6 @@ moveManyM n r1 r2 p = do
   result <- moveM r1 r2 moveResult
   r <- moveManyM (n - 1) (freeRod r1 r2) r2 result
   return r
+
+solve :: Problem -> [Move]
+solve (a, b, c) = execWriter $ moveManyM (length a) A C (a, b, c)
