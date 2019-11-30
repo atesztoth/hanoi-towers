@@ -15,12 +15,13 @@ type Move = (RodID, RodID)
 initial :: Int -> Problem
 initial n = ([1..n], [], [])
 
-validateRod :: Problem -> Bool
-validateRod (r1, r2, r3) = foldl (\a -> \b -> a && b) True [valid r1, valid r2, valid r3] where
-  valid :: Rod -> Bool
-  valid [] = True
-  valid [x] = True
-  valid (x:y:xs) = x < y && valid xs
+validateRod :: Rod -> Bool
+validateRod [] = True
+validateRod [x] = True
+validateRod (x:y:xs) = x < y && validateRod xs
+
+validateProblem :: Problem -> Bool
+validateProblem (r1, r2, r3) = foldl (\a -> \b -> a && b) True [validateRod r1, validateRod r2, validateRod r3]
 
 -- moving a disk from one rod to another one (first tought dummy solution, Need For Time™ ......)
 move :: RodID -> RodID -> Problem -> Problem
